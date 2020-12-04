@@ -201,7 +201,6 @@ def single_potEnergy(loc1, ld_type_list, mol2_in_string, protein_file):
         child.wait()
         out = child.communicate()
         out = out[0].decode("utf-8") 
-        print("out:", out)
         a = out.replace('\n','')
         b = float(a)
         append(b)
