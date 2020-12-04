@@ -201,6 +201,7 @@ def single_potEnergy(loc1, ld_type_list, mol2_in_string, protein_file):
         child.wait()
         out = child.communicate()
         out = out[0].decode("utf-8") 
+        print("out:", out)
         a = out.replace('\n','')
         b = float(a)
         append(b)
@@ -258,6 +259,7 @@ class Grid3DBuilder(object):
         ppdb.df['ATOM']['x_coord'] = transformed_coords[:,0]
         ppdb.df['ATOM']['y_coord'] = transformed_coords[:,1]
         ppdb.df['ATOM']['z_coord'] = transformed_coords[:,2]
+        os.makedirs(output_folder, exist_ok=True)
         output_trans_pdb_path = osp.join(output_folder, pdb_path[:-4] + '_transformed.pdb')
         print('Saving the binding pocket aligned pdb file to: {}.pdb'.format(pdb_path[:-4]))
         ppdb.to_pdb(output_trans_pdb_path)
